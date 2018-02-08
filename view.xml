@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Carregando uma visão</title>
+    
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        use core\base\Controller;<br/>
+        <b>use core\base\View;</b>
+        <nl/>
+        class MyController extends Controller { ... }
+    </example>
+    
+    <function>load</function>
+
+    <p>
+        O método <b>load</b> permite carregar uma visão através de um método do controlador que está sendo executado.
+    </p>
+    
+    <example>
+        public function index() {<br/>
+            <tab/>...<br/>
+            <tab/>View::load('<b>user/index</b>');<br/>
+        }
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Você deve informar somente o nome do subdiretório caso exista e o nome do arquivo da visão que deseja carregar. O exemplo acima irá carregar o arquivo app/view/<b>user/index</b>.php.
+    </note>
+    
+    <p>
+        Você também pode passar um array contendo as informações que deseja recuperar na visão através do segundo argumento do método load.
+    </p>
+    
+    <example>
+        public function index() {<br/>
+            <tab/>$data = [<br/>
+                <tab/><tab/>'<b>message</b>' => 'Welcome ' . Auth::user()->name . '!',<br/>
+                <tab/><tab/>'<b>user</b>' => Auth::user()<br/>
+            <tab/>];<br/>
+            <tab/>View::load('user/index', <b>$data</b>);<br/>
+        }
+    </example>
+    
+    <p>E na visão você pode recuperar os dados da seguinte forma:</p>
+    
+    <example>
+        &lt;body&gt;<br/>
+            <tab/>...<br/>
+            <tab/>&lt;?php echo <b>$message</b>; ?&gt;<br/>
+            <tab/>&lt;?php echo <b>$user</b>->name; ?&gt;
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Note que cada índice do array pode ser lido como uma variável na visão.
+    </note>
+    
+    <p>
+        Você também pode compor visões diretamente no controlador, veja o exemplo abaixo:
+    </p>
+    
+    <example>
+        public function index() {<br/>
+            <tab/>View::load('template/header');<br/>
+            <tab/>View::load('user/index');<br/>
+            <tab/>View::load('template/footer');<br/>
+        }
+    </example>
+    
+    <note>
+        <b>Atenção:</b> No modelo dado com o framework a visão é composta diretamente no arquivo da visão. Consulte os <b>Helpers</b> para saber mais.
+    </note>
+</doc>

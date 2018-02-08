@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Redirecionando páginas</title>
+    
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        use core\base\Controller;<br/>
+        <b>use core\utils\Redirect;</b><br/>
+        use core\utils\Url;
+        <nl/>
+        class MyController extends Controller { ... }
+    </example>
+
+    <function>to</function>
+
+    <p>
+        O método <b>to</b> é usado para redirecionar o usuário para outra página. Você deve informar a URL de destino. Veja alguns exemplos abaixo:
+    </p>
+    
+    <example>
+        Redirect::to(Url::route('login'));
+    </example>
+
+    <example>
+        Redirect::to(Url::base('login'));
+    </example>
+
+    <example>
+        Redirect::to(Url::base());
+    </example>
+    
+    <tip>
+        <b>Dica: </b>Consulte a classe <b>Url</b> para saber mais sobre como gerar URLs para sua aplicação.
+    </tip>
+</doc>

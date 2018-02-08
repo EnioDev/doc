@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Trabalhando com sessão</title>
+    
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        use core\base\Controller;<br/>
+        <b>use core\utils\Session;</b>
+        <nl/>
+        class MyController extends Controller { ... }
+    </example>
+    
+    <function>start</function>
+
+    <p>O método <b>start</b> inicializa a sessão.</p>
+    
+    <example>
+        Session::start();
+    </example>
+    
+    <note>
+        <b>Atenção:</b> A sessão é gerenciada e <b>inicializada automaticamente</b> pelo framework, então não há necessidade de você inicializar manualmente.
+    </note>
+    
+    <function>stop</function>
+
+    <p>O método <b>stop</b> destrói a sessão atual do usuário.</p>
+    
+    <example>
+        Session::stop();
+    </example>
+
+    <function>set</function>
+
+    <p>
+        O método <b>set</b> é usado para definir uma informação de usuário. Você deve passar a chave e o valor que deseja armazenar na sessão atual.
+    </p>
+    
+    <example>
+        Session::set('name', 'John');
+    </example>
+    
+    <function>get</function>
+
+    <p>O método <b>get</b> recupera uma informação que foi definida na sessão atual.</p>
+    
+    <example>
+        $name = Session::get('name'); // John
+    </example>
+
+    <function>forget</function>
+
+    <p>
+        O método <b>forget</b> é usado para apagar uma informação de usuário que foi definida na sessão atual.
+    </p>
+    
+    <example>
+        Session::forget('name');
+    </example>
+    
+    <function>token</function>
+
+    <p>
+        O método <b>token</b> obtém o código gerado automaticamente pela aplicação que identifica a sessão atual do usuário.
+    </p>
+    
+    <example>
+        $token = Session::token();
+    </example>
+</doc>

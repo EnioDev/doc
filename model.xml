@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Criando um modelo</title>
+    
+    <example>
+        &lt;?php namespace model;
+        <nl/>
+        <b>use core\base\Model;</b>
+        <nl/>
+        class MyModel extends <b>Model</b> { ... }
+    </example>
+    
+    <note>
+        <b>Atenção: </b>Você deve herdar a classe <b>Model</b> sempre que criar um novo modelo.
+    </note>
+
+    <function>__construct</function>
+
+    <p>
+        Para vincular uma tabela do banco de dados utilizado na aplicação ao seu modelo você deve declarar o construtor da classe e fazer a chamada do construtor pai informando os dados correspondentes, conforme exemplo:
+    </p>
+
+    <example>
+        public function __construct()<br/>
+        {<br/>
+            <tab/><b>parent::__construct('users', 'id');</b> // tabela, chave primária <br/>
+        }
+    </example>
+    
+    <function>setTable</function>
+
+    <p>
+        Se preferir, você pode definir a tabela usando o método <b>setTable</b>, veja o exemplo:
+    </p>
+
+    <example>
+        public function __construct()<br/>
+        {<br/>
+            <tab/>$this-><b>setTable</b>('users');<br/>
+        }
+    </example>
+    
+    <function>setPrimaryKey</function>
+
+    <p>
+        Você também pode definir a chave primária usando o método <b>setPrimaryKey</b>, veja o exemplo:
+    </p>
+
+    <example>
+        public function __construct()<br/>
+        {<br/>
+            <tab/>$this-><b>setPrimaryKey</b>('id');<br/>
+        }
+    </example>
+</doc>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Traduzindo a aplicação</title>
+    
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        use core\base\Controller;<br/>
+        <b>use core\utils\Lang;</b>
+        <nl/>
+        class MyController extends Controller { ... }
+    </example>
+    
+    <function>setSessionLanguage</function>
+
+    <p>
+        O método <b>setSessionLanguage</b> permite definir um idioma para ser usado durante a sessão do usuário até que ela expire, porém se o método não for utilizado, automaticamente o idioma padrão configurado na aplicação (config.php) será assumido.
+    </p>
+    
+    <example>
+        Lang::<b>setSessionLanguage</b>('en');
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Veja como foi criado um seletor de idiomas na aplicação de exemplo dada com o framework.
+    </note>
+    
+    <function>getSessionLanguage</function>
+
+    <p>
+        O método <b>getSessionLanguage</b> retorna o idioma definido na sessão atual do usuário.
+    </p>
+    
+    <example>
+        $language = Lang::<b>getSessionLanguage</b>();
+    </example>
+    
+    <function>load</function>
+
+    <p>
+        O método <b>load</b> pode ser usado para carregar um idioma dinamicamente em tempo de execução para ser usado em uma visão específica, portanto não altera as configurações da aplicação nem o idioma definido na sessão.
+    </p>
+    
+    <example>
+        public function admin()<br/>
+        {<br/>
+            <tab/>Lang::<b>load</b>('pt-br');<br/>
+            <tab/>View::load('admin/index');<br/>
+        }<br/>
+    </example>
+    
+    <note>
+        <b>Atenção:</b> No exemplo acima, ao executar o método de usuário o idioma informado no método <b>load</b> é usado na visão que será exibida, mesmo que outro idioma já esteja configurado na aplicação.
+    </note>
+
+    <function>strings</function>
+
+    <p>
+        O método <b>strings</b> retorna um objeto contendo todos os textos definidos no arquivo <b>strings.xml</b> do idioma configurado na aplicação. Imagine o seguinte arquivo definido em <b>public/lang/en/strings.xml</b>:
+    </p>
+    
+    <example>
+        &lt;strings&gt;<br/>
+            <tab/>&lt;message&gt;<br/>
+                <tab/><tab/>&lt;welcome&gt;You are welcome!&lt;/welcome&gt;<br/>
+                <tab/><tab/>&lt;create&gt;The user has been created with success.&lt;/create&gt;<br/>
+                <tab/><tab/>&lt;update&gt;The user has been updated with success.&lt;/update&gt;<br/>
+                <tab/><tab/>...<br/>
+           <tab/>&lt;/message&gt;<br/>
+        &lt;/strings&gt;
+    </example>
+
+    <note>
+        <b>Atenção:</b> Todo o conteúdo definido no arquivo <b>strings.xml</b> deve estar entre as tags <b>&lt;strings&gt; </b> ... <b>&lt;/strings&gt;</b>.
+    </note>
+    
+    <p>Você pode recuperar os textos do exemplo acima da seguinte forma:</p>
+
+    <example>
+        $strings = Lang::<b>strings</b>();<br/>
+        echo $strings->message->welcome; // You are welcome!
+    </example>
+    
+    <p>ou diretamente...</p>
+    
+    <example>
+        echo Lang::<b>strings</b>()->message->welcome; // You are welcome!
+    </example>
+
+    <tip>
+        <b>Dica:</b> Consulte o modelo dado com o framework para ver como foi feito a tradução da aplicação usando dois idiomas, o inglês e o português.
+    </tip>
+</doc>

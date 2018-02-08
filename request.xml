@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Recuperando dados de requisições</title>
+    
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        use core\base\Controller;<br/>
+        <b>use core\utils\Request;</b>
+        <nl/>
+        class MyController extends Controller { ... }
+    </example>
+
+    <function>all</function>
+
+    <p>
+        O método <b>all</b> retorna um array contendo todos os dados do formulário que foi submetido ao controlador através de uma requisição POST, ou nulo caso nenhum dado tenha sido submetido.
+    </p>
+
+    <example>
+        $input = Request::all();<nl/>
+        if ($input) {<br/>
+            <tab/>$name = $input['name'];<br/> 
+            <tab/>$email = $input['email'];<br/>
+        }
+    </example>
+
+    <function>get</function>
+
+    <p>O método <b>get</b> é usado para obter um dado específico que foi submetido ao controlador. O método retorna nulo caso o valor não tenha sido encontrado.</p>
+
+    <example>
+        $name = Request::get('name');
+    </example>
+</doc>

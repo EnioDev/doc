@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Criando um controlador</title>
+    
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        <b>use core\base\Controller;</b>
+        <nl/>
+        class MyController extends <b>Controller</b> { ... }
+    </example>
+    
+    <note>
+        <b>Atenção: </b>Você deve herdar a classe <b>Controller</b> sempre que criar um novo controlador.
+    </note>
+
+    <function>__construct</function>
+
+    <p>
+        O método <b>__construct</b> se declarado é executado antes de qualquer outro método do controlador.
+    </p>
+    
+    <example>
+        public function __construct() { ... }
+    </example>
+    
+    <p>
+        Você também pode chamar o método construtor da classe <b>Controller</b> e passar o nome do modelo que deseja vincular ao seu controlador. Veja um exemplo:
+    </p>
+
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        use core\base\Controller;<nl/>
+        
+        class MyController extends Controller {<nl/> 
+        
+        <tab/>public function __construct()<br/>
+        <tab/>{<br/>
+            <tab/><tab/><b>parent::__construct('User');</b> // Nome do modelo <br/>
+        <tab/>}<br/>
+        <tab/>...
+    </example>
+    
+    <note>
+        <b>Atenção: </b>Uma vez vinculado, use <b>$this->model()</b> para acessar o modelo de qualquer parte do controlador. Veja os exemplos mais abaixo.
+    </note>
+    
+    <function>index</function>
+
+    <p>
+        A método abstrato <b>index</b> herdado da classe <b>Controller</b> deve ser implementado no seu controlador e será executado automaticamente caso nenhum outro método tenha sido informado na URL.
+    </p>
+    
+    <example>
+        public function index() { ... }
+    </example>
+    
+    <subtitle>Recuperando dados da tabela</subtitle>
+    
+    <p>
+        Use para recuperar todos os registros da tabela vinculada ao modelo:
+    </p>
+    
+    <example>
+        $users = $this->model()-><b>all</b>();
+    </example>
+    
+    <note>
+        <b>Atenção: </b>O método <b>all</b> retorna um <b>array</b> contendo objetos, cada objeto corresponde à um registro encontrado na tabela.
+    </note>
+    
+    <p>
+        Você também pode recuperar todos os registros informando a coluna e a direção desejada para ordenar os dados.
+    </p>
+    
+    <example>
+        $users = $this->model()-><b>all</b>('name', 'asc');
+    </example>
+    
+    <p>
+        Ou informar múltiplos campos para ordenação:
+    </p>
+    
+    <example>
+        $users = $this->model()-><b>all</b>(['name', 'email'], ['desc', 'asc']);
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Você deve informar um array com as colunas e outro com as direções correspondentes para ordenar por múltiplos campos.
+    </note>
+    
+    <p>
+        Use para recuperar um registro específico informando a chave:
+    </p>
+    
+    <example>
+        $user = $this->model()-><b>find</b>($id);
+    </example>
+    
+    <note>
+        <b>Atenção:</b> O método <b>find</b> retorna um <b>objeto</b> correspondente ao registro encontrado, ou nulo caso não exista.
+    </note>
+    
+    <p>
+        Você também pode recuperar registros específicos da tabela informando as colunas e valores desejados.
+    </p>
+    
+    <example>
+        $args = [<br/>
+            <tab/>'<b>fields</b>' => ['email', 'age'],<br/>
+            <tab/>'<b>values</b>' => ['%gmail%', '18']<br/>
+        ];<nl/>
+        // Recupera todos os usuários que contenham a palavra "gmail" no campo email e possuam 18 anos.<br/>
+        $users = $this->model()-><b>where</b>($args);
+    </example>
+    
+    <p>
+        Se preferir, você pode usar um simples array [coluna => valor] para executar a operação acima.
+    </p>
+    
+    <example>
+        $args = [<br/>
+            <tab/>'email' => '%gmail%',<br/>
+            <tab/>'age' => '18'<br/>
+        ];<nl/>
+        $users = $this->model()-><b>where</b>($args);
+    </example>
+    
+    <p>
+        Você também pode executar o método acima ordenando os dados, informando a coluna e a direção no segundo e terceiro parâmetros.
+    </p>
+    
+    <example>
+        $users = $this->model()-><b>where</b>($args, 'email', 'desc');
+    </example>
+    
+    <note>
+        <b>Atenção: </b>O método <b>where</b> retorna um <b>array</b> contendo objetos, cada objeto corresponde à um registro encontrado na tabela.
+    </note>
+    
+    <subtitle>Inserindo dados na tabela</subtitle>
+
+    <p>
+        Use para inserir um novo registro na tabela:
+    </p>
+    
+    <example>
+        $data = [<br/>
+            <tab/>'<b>fields</b>' => ['name', 'email'],<br/>
+            <tab/>'<b>values</b>' => ['John', 'john@domain.com']<br/>
+        ];<br/>
+        $this->model()-><b>insert</b>($data);
+    </example>
+    
+    <p>
+        Se preferir, você pode usar um simples array [coluna => valor] para executar a operação acima.
+    </p>
+    
+    <example>
+        $data = [<br/>
+            <tab/>'name' => 'John',<br/>
+            <tab/>'email => 'john@domain.com'<br/>
+        ];<br/>
+        $this->model()-><b>insert</b>($data);
+    </example>
+    
+    <subtitle>Atualizando dados na tabela</subtitle>
+
+    <p>
+        Da mesma forma utilizada para inserir dados, você pode atualizar um registro específico na tabela informando a chave no primeiro argumento do método.
+    </p>
+    
+    <example>
+        $this->model()-><b>update</b>($id, $data);
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Observe a estrutura dos arrays utilizados nas operações acima (<b>where</b> e <b>insert</b>). Então siga um dos padrões apresentados.
+    </note>
+    
+    <subtitle>Removendo dados da tabela</subtitle>
+
+    <p>
+        Use para remover um registro específico:
+    </p>
+    
+    <example>
+        $this->model()-><b>delete</b>($id);
+    </example>
+    
+    <p>
+        Se desejar remover todos os registros da tabela você pode executar o método abaixo:
+    </p>
+    
+    <example>
+        $this->model()-><b>deleteAll</b>();
+    </example>
+    
+    <subtitle>Executando uma consulta</subtitle>
+    
+    <p>
+        Você também pode definir a consulta que deseja executar.
+    </p>
+    
+    <example>
+        $values = [<br/>
+            <tab/>'john@domain.com',<br/>
+            <tab/>'123456'<br/>
+        ];<nl/>
+        
+        $sql = "SELECT * FROM users WHERE email = <b>?</b> AND password = <b>?</b>";<nl/>
+        $user = $this->model()-><b>query</b>($sql, $values);
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Evite concatenar valores diretamente na string (SQL). Observe o uso de <b>?</b> e os valores correspondentes em <b>$values</b>, isto evita que uma injeção de SQL seja feita.
+    </note>
+    
+    <p>
+        Veja outro exemplo:
+    </p>
+    
+    <example>
+        $sql = "SELECT * FROM products WHERE price >= <b>?</b>";<nl/>
+        $list = $this->model()-><b>query</b>($sql, ['100']);
+    </example>
+    
+    <note>
+        <b>Atenção:</b> O método <b>query</b> retorna um <b>array</b> contendo objetos, cada objeto corresponde à um registro encontrado na tabela.
+    </note>
+    
+    <p>
+        Veja outro exemplo:
+    </p>
+    
+    <example>
+        // Criando uma nova coluna na tabela de usuários:<br/>
+        $sql = "ALTER TABLE users ADD COLUMN phone VARCHAR(10)";<nl/>
+        $this->model()-><b>query</b>($sql);
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Neste caso o método <b>query</b> retornará <b>true</b> se a SQL for executada com sucesso ou <b>false</b> caso houver erro.
+    </note>
+    
+    <subtitle>Usando outros modelos</subtitle>
+    
+    <p>
+        Você pode carregar um modelo qualquer dinamicamente quando necessário mesmo que você não tenha vinculado-o ao controlador, e usar todas a funcionalidades como recuperar dados, atualizar, inserir, etc.
+    </p>
+    
+    <example>
+        public function myFunction()<br/>
+        {<br/>
+        <tab/>$model = $this-><b>loadModel</b>('Customer');<br/>
+        <tab/>$customers = $model->all();<br/>
+        }<br/>
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Para carregar qualquer modelo da aplicação basta informar o nome do mesmo no método <b>loadModel</b> e um objeto será retornado. Não é necessário fazer a declaração de uso da classe.
+    </note>
+</doc>

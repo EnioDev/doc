@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Instalação</title>
+    
+    <tip>
+        O WaterPHP possui uma aplicação de exemplo pronta, um CRUD, que você pode estudar e entender melhor o funcionamento do framework, e é altamente recomendado que você estude a documentação e consulte este modelo ao mesmo tempo para ter um aprendizado mais rápido. Em pouco tempo você já estará programando!
+    </tip>
+    
+    <subtitle>
+        Para usar a aplicação de exemplo, siga os passos abaixo:
+    </subtitle>
+    
+    <p>
+        <b>1.</b> Baixe o WaterPHP Framework, descompacte o arquivo e renomeie a pasta como desejar. Em seguida coloque-a no diretório de publicação do seu servidor web.
+    </p>
+    
+    <p>
+        <b>2.</b> Dê permissão total para a pasta <b>storage/sessions</b> que se encontra na pasta que acabou de renomear.
+    </p>
+    
+    <p>
+        <b>3.</b> Crie o banco de dados. Para isto, leia o arquivo <b>install.txt</b> que se encontra na raiz do seu projeto.
+    </p>
+    
+    <p>
+        <b>4.</b> Após criar o banco, abra o arquivo de configuração da aplicação localizado em <b>app/config/config.php</b> e altere as configurações do banco informando o usuário e a senha para conexão, etc. Também é muito importante neste momento configurar a chave de criptografia, uma sequência de caracteres que você pode definir para proteger ainda mais seus dados.
+    </p>
+    
+    <p>
+        <b>5.</b> Agora acesse o projeto usando um navegador. Você deverá ver a página de boas vindas do WaterPHP. Então clique no botão <b>CRUD Example</b> para executar a aplicação de exemplo.
+    </p>    
+    
+    <p>
+        <b>6.</b> Antes de efetuar o login você deve cadastrar um novo usuário. Clique no botão para registrar.
+    </p>
+    
+    <subtitle>
+        Pronto! Bom aprendizado. =)
+    </subtitle>
+</doc>

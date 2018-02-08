@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Proteção contra CSRF</title>
+    
+    <subtitle>Introdução</subtitle>
+
+    <p>
+        O framework <b>WaterPHP</b> torna mais fácil proteger seu aplicativo de cross-site request forgeries (CSRF). Cross-site request forgeries são tentativas de explorar a fragilidade do seu aplicativo e executar comandos não autorizados em nome do usuário autenticado.<nl/>
+        O framework <b>WaterPHP</b> gera automaticamente um token CSRF para cada sessão do usuário ativo gerenciado pelo aplicativo. Esse código é utilizado para verificar se o usuário autenticado é o único realmente fazendo as solicitações para o aplicativo.<nl/>
+        Então para proteger sua aplicação você deve criar um campo oculto no formulário que contenha o token CSRF, conforme segue abaixo:
+    </p>
+
+    <nl/>
+    
+    <example>
+        &lt;input type="hidden" name="<b>_token</b>" value="&lt;?php echo <b>session_token()</b>; ?&gt;"&gt;
+    </example>
+
+    <note>
+        <b>Atenção:</b> Você não precisa verificar manualmente o token CSRF nas requisições POST. A aplicação irá automaticamente fazer a verificação e exibirá uma mensagem de erro caso o token informado não seja um token válido.
+    </note>
+</doc>

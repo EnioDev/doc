@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Gerando URLs</title>
+    
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        use core\base\Controller;<br/>
+        <b>use core\utils\Url;</b>
+        <nl/>
+        class MyController extends Controller { ... }
+    </example>
+    
+    <function>current</function>
+
+    <p>O método <b>current</b> retorna a URL que está sendo acessada no momento.</p>
+    
+    <example>
+        $url = Url::current();
+    </example>
+    
+    <function>base</function>
+
+    <p>O método <b>base</b> retorna a URL base do projeto.</p>
+    
+    <example>
+        $url = Url::base();
+    </example>
+    
+    <p>
+        Você também pode concatenar à URL base do projeto um controlador, um método e até mesmo informar um array contendo os parâmetros desejados.
+    </p>
+
+    <example>
+        $url = Url::base('user');<br/>
+        $url = Url::base('user/store');<br/>
+        $url = Url::base('user/edit', [1]);
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Os parâmetros informados no array serão concatenados à URL como uma string. Desta forma, você não deve passar outro array ou um objeto por exemplo.
+    </note>
+    
+    <function>controller</function>
+
+    <p>O método <b>controller</b> gera uma URL para o controlador informado.</p>
+
+    <example>
+        $url = Url::controller('Login');
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Você deve informar o nome do controlador exatamente como foi criado (case-sensitive). Ao executar a URL o método <b>index</b> do controlador será chamado automaticamente.
+    </note>
+    
+    <function>route</function>
+
+    <p>O método <b>route</b> gera uma URL para o rota informada.</p>
+
+    <example>
+        $url = Url::route('user');
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Você deve informar o nome da rota definida no arquivo <b>app/config/routes.php</b>.
+    </note>
+
+    <p>
+        Caso você tenha definido uma rota para um método do controlador que receba parâmetros, você pode passá-los em um array através do segundo argumento do método route.
+    </p>
+
+    <example>
+        $url = Url::route('edit-user', [1]);
+    </example>
+    
+    <tip>
+        <b>Dica:</b> Veja como criar rotas no arquivo <b>app/config/routes.php</b>.
+    </tip>
+    
+    <function>asset</function>
+
+    <p>
+        O método <b>asset</b> gera uma URL para acessar um determinado recurso da pasta public.
+    </p>
+
+    <example>
+        $url = Url::asset('images/logo.png');<br/>
+        $url = Url::asset('js/script.js');
+    </example>
+</doc>

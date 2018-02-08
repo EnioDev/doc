@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Criptografando dados</title>
+    
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        use core\base\Controller;<br/>
+        <b>use core\utils\Encryption;</b>
+        <nl/>
+        class MyController extends Controller { ... }
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Antes de usar a classe Encryption <b>defina uma chave para criptografia</b> no arquivo de configuração da aplicação.
+    </note>
+
+    <function>encode</function>
+
+    <p>O método <b>encode</b> é usado para criptografar dados.</p>
+
+    <example>
+        $encrypted = Encryption::encode($decrypted);
+    </example>
+
+    <function>decode</function>
+
+    <p>O método <b>decode</b> desfaz a criptografia.</p>
+
+    <example>
+        $decrypted = Encryption::decode($encrypted);
+    </example>
+</doc>

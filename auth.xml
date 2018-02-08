@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Fazendo autenticação do usuário</title>
+    
+    <example>
+        &lt;?php namespace controller;
+        <nl/>
+        use core\base\Controller;<br/>
+        <b>use core\utils\Auth;</b>
+        <nl/>
+        class MyController extends Controller { ... }
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Antes de usar a classe Auth <b>defina uma chave para criptografia</b> no arquivo de configuração da aplicação.
+    </note>
+
+    <function>make</function>
+
+    <p>
+        O método <b>make</b> é usado para fazer a autenticação do usuário. Você deve passar um <b>objeto</b> com os dados do usuário que deseja autenticar.
+    </p>
+
+    <example>
+        <b>$user</b> = $this->model()->find($id);<br/>
+        Auth::make(<b>$user</b>);
+    </example>
+    
+    <tip>
+         <b>Dica:</b> Consulte a classe <b>Controller</b> para saber mais sobre como usar o método <b>model</b> no seu controlador.
+    </tip>
+
+    <function>user</function>
+
+    <p>
+        O método <b>user</b> é usado para recuperar os dados do usuário autenticado (objeto). Se nenhum usuário foi autenticado, então retorna nulo.
+    </p>
+
+    <example>
+        $user = Auth::user();
+    </example>
+</doc>

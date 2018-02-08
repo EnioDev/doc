@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Criando rotas</title>
+    
+    <p>
+        As rotas são usadas para executar um controlador ou um método através da URL e devem ser definidas no arquivo <b>app/config/routes.php</b>, conforme segue:
+    </p>
+    
+    <function>controller</function>
+
+    <p>
+        O método <b>controller</b> é usado para definir uma rota para um controlador. Você deve informar o primeiro parâmetro com o nome que será usado na URL e o segundo parâmetro com o nome da classe referente ao controlador.
+    </p>
+    
+    <example>
+        $router->controller('<b>user</b>', '<b>UserController</b>');
+    </example>
+    
+    <p>Feito isso você pode acessar o controlador informando o nome da rota na URL, veja um exemplo:</p>
+    
+    <example>
+        http://localhost/myproject/<b>user</b>
+    </example>
+    
+    <p>ou...</p>
+    
+    <example>
+        http://myproject.com/<b>user</b>
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Por padrão, sempre que você informar uma rota para um controlador, o método <b>index</b> será executado caso nenhum outro método tenha sido informado na URL.
+    </note>
+    
+    <p>Você também pode executar outro método dinamicamente informando o nome do mesmo logo após o nome do controlador na URL. Neste caso, você deve informar o nome do método desejado exatamente como foi declarado no controlador, isto inclui letras maiúsculas e minúsculas.</p>
+    
+    <example>
+        http://localhost/myproject/<b>user</b>/<b>edit</b> >> controller/method
+    </example>
+    
+    <p>E até mesmo passar parâmetros dinamicamente logo após o nome do método na URL.</p>
+    
+    <example>
+        http://localhost/myproject/<b>user</b>/<b>edit</b>/<b>1</b> >> controller/method/param
+    </example>
+    
+    <example>
+        http://localhost/myproject/<b>math</b>/<b>sum</b>/<b>5</b>/<b>10</b> >> controller/method/param1/param2
+    </example>
+    
+    <function>controllerMethod</function>
+
+    <p>O método <b>controllerMethod</b> é usado para definir uma rota para um método específico do controlador. Você deve informar o primeiro parâmetro com o nome que será usado na URL e o segundo parâmetro com o nome da classe referente ao controlador seguido pelo sinal "<b>@</b>" e o nome do método desejado. Veja um exemplo:</p>
+    
+    <example>
+        $router->controllerMethod('<b>user.edit</b>', '<b>UserController@edit</b>');
+    </example>
+    
+    <p>Feito isso você pode acessar o método do controlador informando o nome da rota na URL.</p>
+    
+    <example>
+        http://localhost/myproject/<b>user.edit</b>
+    </example>
+    
+    <p>Você também pode passar parâmetros dinamicamente para este tipo de rota.</p>
+    
+    <example>
+        http://localhost/myproject/<b>user.edit</b>/<b>1</b>
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Para definir o nome de uma rota você deve utilizar letras minúsculas, números se desejado após as letras, e "_" underline ou "-" traço ou "." ponto para separar palavras.
+    </note>
+    
+    <p>Veja alguns exemplos de <b>nomes de rotas válidos</b>:</p>
+    
+    <example>
+        user.create<br/>
+        user.remove<br/>
+        product-get-all<br/>
+        product-new<br/>
+        send_user_message<br/>
+        xyz.n001<br/>
+        xyz.n002
+    </example>
+</doc>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../../public/css/doc.css"?>
+<doc>
+    <title>Usando os helpers na visão</title>
+    
+    <p>
+        Os helpers são métodos auxiliares que te ajudam a compor um arquivo de visão.
+    </p>
+    
+    <tip>
+        <b>Dica:</b> Consulte o modelo dado com o framework. Ele contém vários exemplos de uso dos helpers.
+    </tip>
+    
+    <subtitle>URL Helpers</subtitle>
+    
+    <function>current_url</function>
+
+    <p>
+        O helper <b>current_url</b> retorna a URL que está sendo acessada no momento.
+    </p>
+
+    <example>
+        echo current_url();
+    </example>
+    
+    <function>base_url</function>
+
+    <p>
+        O helper <b>base_url</b> retorna a URL base, o mesmo endereço que você usa para acessar sua aplicação.
+    </p>
+
+    <example>
+        echo base_url();<nl/>
+        // saída: http://myproject.com<br/>
+        // ou: http://localhost/myproject
+    </example>
+        
+    <function>url</function>
+
+    <p>
+        O helper <b>url</b> concatena o texto informado no primeiro argumento do método à URL base da aplicação, desta forma você pode acessar controladores e metódos informando as partes correspondentes.
+    </p>
+
+    <example>
+        echo url('user'); // saída: http://myproject.com/user<br/>
+        echo url('user/store'); // saída: http://myproject.com/user/store
+    </example>
+    
+    <p>
+        Você pode passar parâmetros para um método do controlador através de um array informando o segundo argumento do método url.
+    </p>
+
+    <example>
+        echo url('user/edit', [<b>1</b>]); // saída: http://myproject.com/user/edit/1<br/><nl/>
+        
+        // O método edit do controlador User recebe o valor informado através do parâmetro $id:<br/>
+        public function edit(<b>$id</b>) { ... }
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Os parâmetros informados no array serão concatenados à URL como uma string. Desta forma, você não deve passar outro array ou um objeto por exemplo. Lembre-se, você também pode enviar dados ao seu controlador através de requisições POST, submetendo um formulário. Neste caso, use a classe <b>Request</b> para recuperar os dados no seu controlador.
+    </note>
+    
+    <p>
+        Veja outro exemplo:
+    </p>
+
+    <example>
+        echo url('math/sum', [<b>5</b>, <b>10</b>]); // saída: http://myproject.com/math/sum/5/10<br/><nl/>
+        
+        // O método sum do controlador Math recebe o valores informados:<br/>
+        public function sum(<b>$x</b>, <b>$y</b>) { return $x + $y; }
+    </example>
+    
+    <function>controller</function>
+
+    <p>
+        O helper <b>controller</b> gera uma URL para acessar o controlador informado.
+    </p>
+
+    <example>
+        echo controller('Login');
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Você deve informar o nome do controlador exatamente como foi criado (case-sensitive). Ao executar a URL o método <b>index</b> do controlador será chamado automaticamente.
+    </note>
+
+    <function>route</function>
+
+    <p>
+        O helper <b>route</b> gera uma URL para o rota informada.
+    </p>
+
+    <example>
+        echo route('user');
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Você deve informar o nome da rota conforme definido no arquivo <b>app/config/routes.php</b>.
+    </note>
+
+    <p>
+        Caso você tenha definido uma rota para um método do controlador que receba parâmetros, você pode passá-los em um array através do segundo argumento do método route.
+    </p>
+
+    <example>
+        echo route('edit-user', [1]);
+    </example>
+    
+    <tip>
+        <b>Dica:</b> Veja como criar rotas no arquivo <b>app/config/routes.php</b>.
+    </tip>
+        
+    <function>asset</function>
+
+    <p>
+        O helper <b>asset</b> gera uma URL para acessar um determinado recurso da pasta public.
+    </p>
+
+    <example>
+        echo asset('images/logo.png'); // saída: http://myproject.com/public/images/logo.png<br/>
+        echo asset('js/script.js'); // saída: http://myproject.com/public/js/script.js
+    </example>
+    
+    <subtitle>Path Helpers</subtitle>
+    
+    <function>public_path</function>
+
+    <p>
+        O helper <b>public_path</b> retorna o endereço para acessar o diretório "public" da aplicação.
+    </p>
+
+    <example>
+        $path = public_path();
+    </example>
+    
+    <note>
+        <b>Atenção:</b> O endereço retornado depende do sistema operacional utilizado.
+    </note>
+    
+    <function>image_path</function>
+
+    <p>
+        O helper <b>image_path</b> retorna o endereço para acessar a pasta de imagens no diretório público da aplicação.
+    </p>
+
+    <example>
+        $path = image_path();
+    </example>
+    
+    <tip>
+        <b>Dica:</b> Por exemplo, você pode fazer um upload de imagem através da sua aplicação para a pasta <b>public/images</b> usando <b>image_path</b>.
+    </tip>
+    
+    <subtitle>Language Helpers</subtitle>
+    
+    <function>default_language</function>
+
+    <p>
+        O helper <b>default_language</b> retorna o idioma padrão definido nas configurações da aplicação (config.php).
+    </p>
+
+    <example>
+        echo default_language();
+    </example>
+    
+    <function>session_language</function>
+
+    <p>
+        O helper <b>session_language</b> retorna o idioma definido na sessão do usuário. Caso o idioma da sessão atual não tenha sido alterado, então retorna o idioma padrão definido nas configurações.
+    </p>
+
+    <example>
+        echo session_language();
+    </example>
+    
+    <tip>
+        <b>Dica:</b> Consulte a classe <b>Lang</b> para saber mais sobre como fazer a tradução da aplicação.
+    </tip>
+    
+    <subtitle>Miscellaneous</subtitle>
+    
+    <function>load</function>
+
+    <p>
+        O helper <b>load</b> pode ser usado para carregar um arquivo de visão dentro da visão atual.
+    </p>
+
+    <example>
+        load('<b>template/header</b>');<br/>
+        ...  HTML body ...<br/>
+        load('<b>template/footer</b>');
+    </example>
+    
+    <note>
+        <b>Atenção:</b> Você não deve fornecer o caminho completo para o arquivo da visão que deseja carregar, somente informe o subdiretório caso exista e o nome do arquivo.
+    </note>
+    
+    <p>
+        O exemplo acima irá carregar os seguintes arquivos dentro da visão atual:<br/>
+        - app/view/<b>template/header</b>.php<br/>
+        - app/view/<b>template/footer</b>.php
+    </p>
+    
+    <function>strings</function>
+
+    <p>
+        O helper <b>strings</b> retorna um objeto com todo o conteúdo definido no arquivo <b>strings.xml</b> do idioma configurado na aplicação.
+    </p>
+
+    <example>        
+        // Imprimindo uma mensagem definida no arquivo strings.xml:<br/>
+        $strings = strings();<br/>
+        echo $strings->message->welcome;<nl/>
+        
+        // Ou diretamente:<br/>
+        echo strings()->message->welcome;
+    </example>
+    
+    <tip>
+        <b>Dica:</b> Consulte a classe <b>Lang</b> para saber mais sobre como fazer a tradução da aplicação. O modelo dado com o framework também contém vários exemplos de uso do helper <b>strings</b>.
+    </tip>
+
+    <function>auth</function>
+
+    <p>
+        O helper <b>auth</b> retorna um objeto com os dados do usuário autenticado ou nulo caso a autenticação não tenha sido feita.
+    </p>
+
+    <example>
+        $user = auth();<nl/>
+        
+        // Imprimindo o nome do usuário autenticado:<br/>
+        echo $user->name;<nl/>
+        
+        // Verificando se o usuário foi autenticado:<br/>
+        if (auth()) {<br/>
+            <tab/>// Faça algo aqui!<br/>
+        }
+    </example>
+    
+    <tip>
+        <b>Dica:</b> Consulte a classe <b>Auth</b> para saber mais sobre como fazer a autenticação do usuário.
+    </tip>
+
+    <function>session_token</function>
+
+    <p>
+        O helper <b>session_token</b> retorna o código gerado pela aplicação que identifica a sessão atual do usuário, e você deve usar nos formulários para proteger sua aplicação contra ataques (veja CSRF na documentação).
+    </p>
+
+    <example>
+        echo session_token();
+    </example>
+    
+    <tip>
+        <b>Dica:</b> Veja como o método foi usado nos formulários da aplicação de exemplo do framework.
+    </tip>
+    
+    <function>previous</function>
+
+    <p>
+        O helper <b>previous</b> recupera o último valor do input caso o formulário tenha sido submetido e retornado algum erro de validação.
+    </p>
+
+    <example>
+        $name = previous('name');
+    </example>
+</doc>
