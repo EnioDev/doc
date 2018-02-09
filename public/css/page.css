@@ -1,0 +1,233 @@
+body {
+    text-align: center;
+    color: #5c5855;
+    font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 30px;
+}
+
+h1 {
+    color: #5c5855;
+    font-size: 48px;
+    font-family: Chivo, "Helvetica Neue", Helvetica, Arial, serif;
+    font-weight: normal;
+    line-height: 1.1;
+    margin: 0.67em 0;
+    margin-top: 90px
+}
+
+h2 {
+    color: #149ad4;
+    font-size: 27px;
+    line-height: 70px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    vertical-align: middle;
+    opacity: 1;
+}
+
+h2 span {
+    color: #e9e6e2;
+    font-size: 70px;
+    padding: 0 5px;
+    position: relative;
+    top: 10px;
+}
+
+h4 span {
+    color: #e9e6e2;
+    border: 2px solid #e9e6e2;
+    border-radius: 999px;
+    padding: 10px;
+    cursor: pointer;
+    float: right;
+}
+
+h4 span:hover {
+    color: #5c5855;
+    border: 2px solid #5c5855;
+}
+
+footer {
+    border-top: 1px solid #e9e6e1;
+    margin-top: 30px;
+    padding-top: 15px;
+    color: #5c5855;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+a {
+    color: #31b0d5;
+}
+
+a:hover {
+    color: #5c5855;
+    text-decoration: none;
+}
+
+.btn.btn-info {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background-color: #aaa;
+    border-radius: 0;
+}
+
+.new {
+    color: #5cb85c;
+    font-weight: bold;
+    font-size: 11px;
+    padding-right: 5px;
+}
+
+.upd {
+    color: #d9534f;
+    font-weight: bold;
+    font-size: 11px;
+    padding-right: 5px;
+}
+
+.deprecated {
+    color: #aaa;
+}
+
+/****************************
+            Icons
+****************************/
+
+@font-face {
+    font-family: "ionicons";
+    src: url("../icons/ionicons.eot?v=1.4.1");
+    src: url("../icons/ionicons.eot?v=1.4.1#iefix") format("embedded-opentype"), url("../icons/ionicons.ttf?v=1.4.1") format("truetype"), url("../icons/ionicons.woff?v=1.4.1") format("woff"), url("../icons/ionicons.svg?v=1.4.1#Ionicons") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    display: inline-block;
+    font-family: "ionicons";
+    font-size: 60px;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon.github:before {
+    content: "\f233";
+}
+
+.icon.twitter:before {
+    content: "\f243";
+}
+
+.icon.facebook:before {
+    content: "\f231";
+}
+
+.icon.menu:before {
+    content: "\f20e";
+}
+
+.icon.close:before {
+    content: "\f12a";
+}
+
+.icon.responsive:before {
+    content: "\f1f9";
+}
+
+.icon.codebase:before {
+    content: "\f271";
+}
+
+.icon.design:before {
+    content: "\f160";
+}
+
+.icon.focused:before {
+    content: "\f1a2";
+}
+
+.icon.browsers:before {
+    content: "\f1d4";
+}
+
+.icon.seo:before {
+    content: "\f1f7";
+}
+
+.icon.customize:before {
+    content: "\f17d";
+}
+
+.icon.services:before {
+    content: "\f15a";
+}
+
+.icon.customization:before {
+    content: "\f1e0";
+}
+
+.icon.implementation:before {
+    content: "\f184";
+}
+
+.icon.hosting:before {
+    content: "\f177";
+}
+
+.icon.support:before {
+    content: "\f19c";
+}
+
+.icon.edit:before {
+    content: "\f17d";
+}
+
+.icon.newsletter:before {
+    content: "\f12e";
+}
+
+.icon.wordpress:before {
+    content: "\f248";
+}
+
+.icon.video:before {
+    content: "\f1c7";
+}
+
+/****************************
+        Mobile/Tablet
+****************************/
+
+@media screen and (max-width: 1024px) {
+    body {
+        font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 36px;
+        margin-top: 80px;
+    }
+    h2 {
+        font-size: 22px;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    h2 span {
+        font-size: 40px;
+        top: 4px;
+    }
+    .icon {
+        margin-top: 30px;   
+    }
+}
