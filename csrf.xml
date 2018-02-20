@@ -20,4 +20,8 @@
     <note>
         <b>Atenção:</b> Você não precisa verificar manualmente o token CSRF nas requisições POST. A aplicação irá automaticamente fazer a verificação e exibirá uma mensagem de erro caso o token informado não seja um token válido.
     </note>
+
+    <tip>
+        <b>NOTA:</b> Para evitar uma mensagem de erro de segurança, dê permissão total para o usuário logado em seu SO na pasta <b>"app/storage/sessions"</b>.
+    </tip>
 </doc>
