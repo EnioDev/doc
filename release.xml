@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/css" href="./public/css/doc.css"?>
 <doc>
-    <title>Notas de lançamento da versão 1.4.x</title>
+    <title>Notas de lançamento da versão 1.5.x</title>
     
     <p>
         Algumas melhorias significativas foram feitas no core do framework, tais como:
     </p>
     
     <tip>
-         - Melhoria no tratamento de erros e exceções;<br/>
-         - Novos métodos para definir a tabela e chave primária na criação de um modelo;<br/>
-         - Permite enviar requisições via método POST usando o formato JSON para transmitir dados;<br/>
-         - Aperfeiçoamento dos métodos de manipulação do banco de dados;<br/>
-         - Melhoria na definição de rotas (padrão de nomes);<br/>
-         - Correções de bugs, etc.
+         - Melhoria nos métodos de criptografia para funcionar em ambos php5 e 7.x;<br/>
+         - Removido a classe Mail (depreciada);<br/>
+         - Algumas correções na tradução para o inglês;
     </tip>
 </doc>
