@@ -22,6 +22,6 @@
     </note>
 
     <tip>
-        <b>NOTA:</b> Para evitar uma mensagem de erro de segurança, dê permissão total para o usuário logado em seu SO na pasta <b>"app/storage/sessions"</b>.
+        <b>NOTA:</b> Para evitar uma mensagem de erro de segurança, dê permissão total para o usuário logado em seu SO na pasta <b>"storage/sessions"</b>.
     </tip>
 </doc>
